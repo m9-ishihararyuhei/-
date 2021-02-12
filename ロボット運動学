@@ -1,0 +1,111 @@
+float angle = 0.0;
+float angleDirection = 1;
+float anglespeed = 0.005;
+void setup(){
+size(800, 800,P3D);
+}
+void draw(){
+background(204);
+camera(200,800,0,0,0,0,0,0,-1);
+translate(0,0,-200);
+strokeWeight(1);
+box(200,200,50);
+
+translate(0, 0,125);
+if(mousePressed){
+  if(mouseButton==LEFT){
+  rotate(angle*2);
+  }
+  if(mouseButton==RIGHT){
+  rotate(-angle*2);
+  }
+}
+strokeWeight(1);
+box(20,20,200);
+
+translate(65,0,110);
+strokeWeight(1);
+box(150,20,20);
+
+translate(85,0,0);
+if(keyPressed){
+  if(key=='q'){
+  rotateX(-angle*2);
+  }
+}
+strokeWeight(1);
+box(20,20,20);
+
+translate(0,0,60);
+strokeWeight(1);
+box(20,20,100);
+
+translate(0,0,60);
+strokeWeight(1);
+box(20,20,20);
+
+pushMatrix();
+translate(0,0,15);
+rotateX(-angle);
+strokeWeight(1);
+sphere(5);
+
+translate(0,0,15);
+strokeWeight(1);
+box(5,5,20);
+
+translate(0,0,15);
+rotateX(-angle*2);
+strokeWeight(1);
+sphere(5);
+
+translate(0,0,15);
+strokeWeight(1);
+box(5,5,20);
+popMatrix();
+
+pushMatrix();
+translate(15,0,0);
+rotate(angle);
+strokeWeight(1);
+sphere(5);
+
+translate(15,0,0);
+strokeWeight(1);
+box(20,5,5);
+
+translate(15,0,0);
+rotate(angle*2);
+strokeWeight(1);
+sphere(5);
+
+translate(15,0,0);
+strokeWeight(1);
+box(20,5,5);
+popMatrix();
+
+pushMatrix();
+translate(-15,0,0);
+rotate(-angle);
+strokeWeight(1);
+sphere(5);
+
+translate(-15,0,0);
+strokeWeight(1);
+box(20,5,5);
+
+translate(-15,0,0);
+rotate(-angle*2);
+strokeWeight(1);
+sphere(5);
+
+translate(-15,0,0);
+strokeWeight(1);
+box(20,5,5);
+popMatrix();
+
+angle += anglespeed* angleDirection;
+if((angle > QUARTER_PI)||(angle < 0)){
+angleDirection = - angleDirection;
+}
+}
